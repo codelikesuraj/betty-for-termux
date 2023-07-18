@@ -4,7 +4,7 @@
 
 ### Installation
 
-Run the script `install.sh` (**YOu DON'T NEED ROOT PRIVILEGES**) to install `betty-style` and `betty-doc` in termux, along with the following manuals:
+Run the script `install.sh` (**ROOT PRIVILEGES ARE NOT REQUIRED**) to install `betty-style` and `betty-doc` in termux, along with the following manuals:
 
  * _betty(1)_
  * _betty-style(1)_
