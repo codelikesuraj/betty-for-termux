@@ -37,6 +37,10 @@ do
 	fi
 done
 
+echo -e "Installing dependencies.."
+
+pkg install perl
+
 echo -e "Installing binaries.."
 
 mkdir -p "${APP_PATH}"
