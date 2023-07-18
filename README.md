@@ -11,7 +11,8 @@ Run the installation script (**ROOT PRIVILEGE IS NOT REQUIRED**) ``` ./install.s
  * _betty(1)_
  * _betty-style(1)_
  * _betty-doc(1)_
-This will also install the termux 'perl' package (or you can do that manually with ```pkg install perl```.
+
+This also installs the termux 'perl' package (or you can do that manually with ```pkg install perl```.
 
 ### Usage
 
