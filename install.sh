@@ -1,18 +1,41 @@
 #!/bin/bash
 
-if [ "$(id -u)" != "0" ]
-then
-	echo "Sorry, you are not root."
-	exit 1
-fi
+TERMUX_PATH="/data/data/com.termux/files"
 
 BETTY_STYLE="betty-style"
 BETTY_DOC="betty-doc"
 BETTY_WRAPPER="betty"
 
-APP_PATH="/opt/betty"
-BIN_PATH="/usr/local/bin"
-MAN_PATH="/usr/local/share/man/man1"
+APP_PATH="${TERMUX_PATH}/opt/betty"
+BIN_PATH="${TERMUX_PATH}/usr/bin"
+MAN_PATH="${TERMUX_PATH}/usr/share/man/man1"
+
+echo -e "Removing any previous installations.."
+
+# remove any files & dir from previous
+# installations to avoid conflict
+if [ -e ${APP_PATH} ]
+then
+	rm -r "${APP_PATH}"
+fi
+
+for file in "${BETTY_DOC}" "${BETTY_STYLE}" "${BETTY_WRAPPER}"
+do
+	file="${BIN_PATH}/${file}"
+	if [ -L ${file} ]
+	then
+		unlink ${file}
+	fi
+done
+
+for file in "betty.1" "${BETTY_DOC}.1" "${BETTY_STYLE}.1"
+do
+	file="${MAN_PATH}/${file}"
+	if [ -e ${file} ]
+	then
+		rm ${file}
+	fi
+done
 
 echo -e "Installing binaries.."
 
@@ -37,9 +60,5 @@ mkdir -p "${MAN_PATH}"
 cp "man/betty.1" "${MAN_PATH}"
 cp "man/${BETTY_STYLE}.1" "${MAN_PATH}"
 cp "man/${BETTY_DOC}.1" "${MAN_PATH}"
-
-echo -e "Updating man database.."
-
-mandb
 
 echo -e "All set."

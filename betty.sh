@@ -4,7 +4,9 @@
 # Originally by Tim Britton (@wintermanc3r), multiargument added by
 # Larry Madeo (@hillmonkey)
 
-BIN_PATH="/usr/local/bin"
+TERMUX_PATH="/data/data/com.termux/files"
+
+BIN_PATH="${TERMUX_PATH}/usr/bin"
 BETTY_STYLE="betty-style"
 BETTY_DOC="betty-doc"
 
